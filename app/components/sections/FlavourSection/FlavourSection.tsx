@@ -181,7 +181,7 @@ export default function FlavorSection() {
             className="absolute bottom-[120px] left-[10%] w-[200px] h-auto opacity-80"
           >
             <Image
-              src="/assets/elements/Shadow-small.png"
+              src="/assets/elements/Shadow-big.png"
               alt="Spoon Bowl Shadow"
               width={80}
               height={60}
