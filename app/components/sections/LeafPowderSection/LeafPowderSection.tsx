@@ -270,7 +270,7 @@ export default function LeafPowderSection() {
           {/* Scroll Indicator */}
           <div
             ref={scrollLineRef}
-            className="absolute right-0 top-0 hidden md:block w-4 h-[320px] translate-x-1/2 md:-mt-20"
+            className="absolute right-0 top-0 hidden sm:block w-4 h-[320px] translate-x-1/2 md:-mt-20 md:-ml-90"
           >
             <div className="absolute left-1/2 -top-15 h-full w-px bg-gray-300 transform -translate-x-1/2" />
             <div
@@ -294,6 +294,10 @@ export default function LeafPowderSection() {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
+
+        
+
+        
       `}</style>
     </section>
   );

@@ -115,7 +115,7 @@ const TeaFeature: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="flex flex-col md:flex-row w-full h-auto md:h-screen">
+    <div ref={sectionRef} className="flex flex-col md:flex-row w-full h-auto md:h-[70vh] lg:h-[80vh]">
       {/* Left: Image */}
       <div className="w-full md:w-1/2 h-64 md:h-full">
         <img

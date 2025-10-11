@@ -137,7 +137,7 @@ const NewsletterSignup: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#0043154D] py-16 px-4 sm:px-6 lg:px-8 text-center overflow-hidden mt-20 mb-20 rounded-lg"
+      className="relative bg-[#0043154D] py-16 px-4 sm:px-6 lg:px-8 text-center overflow-hidden mt-20 mb-20 rounded-lg min-h-[400px] sm:min-h-[500px]"
     >
       {/* Floating Leaves Background (animated wrapper) */}
       <div ref={bgWrapRef} className="absolute inset-0 pointer-events-none" style={{ zIndex: 5 }}>

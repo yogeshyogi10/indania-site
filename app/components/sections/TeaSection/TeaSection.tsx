@@ -163,7 +163,7 @@ export default function TeaSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white py-12 px-4 md:px-8 lg:px-16 mt-30 mb-30 max-w-7xl mx-auto md:min-h-[100vh] md:max-h-[80vh] lg:min-h-[100vh] lg:max-h-[100vh]"
+      className="relative bg-white py-12 px-4 md:px-8 lg:px-16 mt-30 mb-30 max-w-7xl mx-auto md:h-[70vh] lg:h-[50vh]"
     >
       {/* Leaves */}
       <div className="absolute bottom-[-100px] left-[-200px] z-0 opacity-90 md:bottom-[-140px] md:left-[-220px] lg:bottom-[-200px] lg:left-[-300px]">

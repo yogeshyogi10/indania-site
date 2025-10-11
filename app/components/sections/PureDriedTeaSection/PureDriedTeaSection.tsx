@@ -191,18 +191,18 @@ export default function PureDriedTeaSection() {
           {/* Stats */}
           <div className="flex flex-row sm:flex-row items-center justify-between gap-6 w-full max-w-md">
             <div className="text-center w-full sm:w-auto">
-              <p ref={stat1Ref} className="text-xl font-bold">99%</p>
-              <p className="text-sm text-gray-600">Pure product</p>
+              <p ref={stat1Ref} className="text-2xl sm:text-xl font-extrabold text-gray-900">99%</p>
+              <p className="text-xs sm:text-sm text-gray-700 font-medium">Pure product</p>
             </div>
             <div className="hidden sm:block h-10 border-l border-gray-300" />
             <div className="text-center w-full sm:w-auto">
-              <p ref={stat2Ref} className="text-xl font-bold">90%</p>
-              <p className="text-sm text-gray-600">Quality Assurance</p>
+              <p ref={stat2Ref} className="text-2xl sm:text-xl font-extrabold text-gray-900">90%</p>
+              <p className="text-xs sm:text-sm text-gray-700 font-medium">Quality Assurance</p>
             </div>
             <div className="hidden sm:block h-10 border-l border-gray-300" />
             <div className="text-center w-full sm:w-auto">
-              <p ref={stat3Ref} className="text-xl font-bold">89%</p>
-              <p className="text-sm text-gray-600">Trusted Buyers</p>
+              <p ref={stat3Ref} className="text-2xl sm:text-xl font-extrabold text-gray-900">89%</p>
+              <p className="text-xs sm:text-sm text-gray-700 font-medium">Trusted Buyers</p>
             </div>
           </div>
         </div>
