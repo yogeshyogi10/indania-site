@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-manrope: var(--font-manrope);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* ⬇️ Prevent horizontal scrolling everywhere */
+html,
+body {
+  overflow-x: clip; /* modern “no horizontal scroll” */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.options-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.options-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* 1) Soften the heading underline width on tablets */
+  section h2::after {
+    width: 10rem;
+    height: 0.5rem;
+  }
+
+  /* 2) Images: slightly smaller, milder corner radius, remove big md margins */
+  img[alt="Tea Leaves"],
+  img[alt="Tea Pouring"] {
+    width: 85% !important;
+    max-width: 420px !important;
+    max-height: 360px !important;
+    border-top-left-radius: 64px !important;
+    border-bottom-right-radius: 64px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* 3) Text containers: relax md:mr-20 / md:ml-20 spacing */
+  section > .flex:nth-of-type(1) > div:last-child {
+    margin-right: 1rem !important;
+  }
+  section > .flex:nth-of-type(2) > div:first-child {
+    margin-left: 1rem !important;
+  }
+
+  /* 4) Give both rows a touch of breathing room without overflow */
+  section > .flex {
+    gap: 1.5rem !important;
+  }
+}
