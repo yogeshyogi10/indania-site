@@ -151,6 +151,7 @@ export default function TeaSection() {
 
   return (
     <section
+    id="crafted"
       ref={sectionRef}
       className="relative bg-white py-12 px-4 md:px-8 lg:px-16 mt-0 mb-0 max-w-7xl mx-auto lg:min-h-[40vh]"
     >

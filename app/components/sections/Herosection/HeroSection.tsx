@@ -91,7 +91,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative h-[100vh] flex items-center justify-center overflow-hidden">
+    <section id="home" ref={sectionRef} className="relative h-[100vh] flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 -z-30">
         <img

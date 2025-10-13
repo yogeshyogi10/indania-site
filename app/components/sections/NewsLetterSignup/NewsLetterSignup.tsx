@@ -136,6 +136,7 @@ const NewsletterSignup: React.FC = () => {
 
   return (
     <section
+    id="newsletter"
       ref={sectionRef}
       className="relative bg-[#B3C7B9] py-16 px-4 sm:px-6 lg:px-8 text-center overflow-hidden mt-0 mb-0 rounded-lg min-h-[400px] sm:min-h-[500px]"
     >
@@ -174,11 +175,11 @@ const NewsletterSignup: React.FC = () => {
             type="text"
             placeholder="First Name"
             className="
-              px-6 py-3 rounded-full w-full block font-black
+              px-6 py-3 rounded-full w-full block 
               outline-none border border-gray-300 bg-white
               transform-gpu transition-transform duration-200 ease-out
               hover:scale-[1.03] focus:scale-[1.03]
-              focus:ring-2 focus:ring-green-700/60
+              focus:ring-2 focus:ring-green-700/60 placeholder-gray-700
               motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:focus:scale-100
             "
           />
@@ -186,11 +187,11 @@ const NewsletterSignup: React.FC = () => {
             type="email"
             placeholder="Email"
             className="
-              px-6 py-3 rounded-full w-full block font-black
+              px-6 py-3 rounded-full w-full block 
               outline-none border border-gray-300 bg-white
               transform-gpu transition-transform duration-200 ease-out
               hover:scale-[1.03] focus:scale-[1.03]
-              focus:ring-2 focus:ring-green-700/60
+              focus:ring-2 focus:ring-green-700/60 placeholder-gray-700
               motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:focus:scale-100
             "
           />

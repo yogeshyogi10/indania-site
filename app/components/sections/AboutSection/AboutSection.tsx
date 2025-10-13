@@ -207,7 +207,7 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section className="py-14 sm:py-16 md:py-20 px-4 md:px-8 xl:px-12 bg-white max-w-7xl mx-auto font-manrope">
+    <section id="about" className="py-14 sm:py-16 md:py-20 px-4 md:px-8 xl:px-12 bg-white max-w-7xl mx-auto font-manrope">
       <h2
         ref={headingRef}
         className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10 sm:mb-12 md:mb-16 text-gray-900"
