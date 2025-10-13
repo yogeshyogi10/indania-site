@@ -209,7 +209,7 @@ export default function LeafPowderSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex justify-center items-center min-h-[120vh] md:min-h-[80vh] py-24 md:py-40 bg-white overflow-hidden"
+      className="relative flex justify-center items-center min-h-[120vh] md:min-h-[50vh] py-24 md:py-40 bg-white overflow-hidden"
     >
       {/* Header (slow fade-up) */}
       <div ref={headerRef} className="absolute top-16 md:top-20 w-full text-center z-20">
@@ -227,7 +227,7 @@ export default function LeafPowderSection() {
         <div className="w-full md:w-2/5 flex">
           <div
             ref={scrollListRef}
-            className="w-90 h-[200px] overflow-y-scroll pr-2 custom-scrollbar space-y-3 ml-15 -mt-45 mb-10 lg:w-150 md:-mt-10"
+            className="w-90 h-[200px] overflow-y-scroll pr-2 custom-scrollbar space-y-3 ml-17 -mt-45 mb-10 lg:w-150 md:-mt-10 "
           >
             {optionsData.map(({ id, text, icon }, index) => (
               <button

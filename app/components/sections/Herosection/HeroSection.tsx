@@ -111,7 +111,7 @@ export default function HeroSection() {
           ref={logoRef}
           src="/assets/logo/Logo.png"
           alt="Indania"
-          className="w-[260px] md:w-[340px] lg:w-[420px] h-auto"
+          className="w-[260px] md:w-[340px] lg:w-[420px] h-auto md:-mt-50"
           width={420}
           height={140}
           decoding="async"
@@ -133,7 +133,7 @@ export default function HeroSection() {
             sm:w-[140vw] sm:scale-[1.4]
             md:w-[120vw] md:scale-[1.25]
             lg:w-full lg:max-w-none lg:scale-100
-            h-auto object-contain opacity-85
+            h-auto object-contain opacity-85 md:-mt-70 lg:mt-0
           "
           width={800}
           height={400}
@@ -148,7 +148,7 @@ export default function HeroSection() {
             sm:w-[140vw] sm:scale-[1.4]
             md:w-[120vw] md:scale-[1.25]
             lg:w-full lg:max-w-none lg:scale-100
-            h-auto object-contain opacity-85
+            h-auto object-contain opacity-85 md:-mt-70 lg:mt-0
           "
           width={800}
           height={400}
@@ -165,7 +165,7 @@ export default function HeroSection() {
             sm:w-[160vw] sm:scale-[1.6]
             md:w-[135vw] md:scale-[1.35]
             lg:w-full lg:max-w-none lg:scale-100
-            h-auto object-contain opacity-90
+            h-auto object-contain opacity-90 lg:mt-30
           "
           width={900}
           height={450}
@@ -180,7 +180,7 @@ export default function HeroSection() {
             sm:w-[160vw] sm:scale-[1.6]
             md:w-[135vw] md:scale-[1.35]
             lg:w-full lg:max-w-none lg:scale-100
-            h-auto object-contain opacity-90
+            h-auto object-contain opacity-90vlg:mt-30
           "
           width={900}
           height={450}
@@ -188,7 +188,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content (on top of clouds) */}
-      <div ref={contentRef} className="relative z-40 text-center max-w-xl md:max-w-3xl lg:max-w-2xl px-6 mt-16">
+      <div ref={contentRef} className="relative z-40 text-center max-w-xl md:max-w-3xl lg:max-w-2xl px-6 mt-16 md:-mt-50 lg:mt-0">
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-4 drop-shadow-lg">
           Art of Tea
         </h1>

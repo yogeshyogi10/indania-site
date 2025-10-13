@@ -45,7 +45,7 @@ export default function PureDriedTeaSection() {
       el: HTMLElement,
       to: number,
       suffix = "%",
-      duration = 1.2
+      duration = 2.2 // slightly slower default
     ) => {
       const obj = { val: 0 };
       return gsap.to(obj, {
@@ -111,7 +111,7 @@ export default function PureDriedTeaSection() {
         filter: "blur(0px)",
         duration: 0.9,
         ease: "power1.out",
-        stagger: 0.18, // slower, wider stagger
+        stagger: 0.18,
       })
       .to(
         items,
@@ -121,16 +121,16 @@ export default function PureDriedTeaSection() {
           filter: "blur(0px)",
           duration: 0.85,
           ease: "power1.out",
-          stagger: 0.14, // slower list reveal
+          stagger: 0.14,
         },
         "-=0.25"
       );
 
-    // Stats counter timeline (paused) — slower counts
+    // Stats counter timeline (paused) — slightly slower + wider stagger
     const tlStats = gsap.timeline({ paused: true });
-    tlStats.add(animateCount(statEls[0]!, 99, "%", 1.8), 0.0);
-    tlStats.add(animateCount(statEls[1]!, 90, "%", 1.8), 0.2);
-    tlStats.add(animateCount(statEls[2]!, 89, "%", 1.8), 0.4);
+    tlStats.add(animateCount(statEls[0]!, 99, "%", 2.2), 0.0);
+    tlStats.add(animateCount(statEls[1]!, 90, "%", 2.2), 0.3);
+    tlStats.add(animateCount(statEls[2]!, 89, "%", 2.2), 0.6);
 
     // Set initial once before creating trigger
     setInitial();
@@ -138,7 +138,7 @@ export default function PureDriedTeaSection() {
     // ScrollTrigger that replays on every downward entry; resets when scrolling back above
     const st = ScrollTrigger.create({
       trigger: section,
-      start: "top 82%",   // later start for calmer feel
+      start: "top 82%",
       end: "bottom 40%",
       onEnter: (self) => {
         if (self.direction === 1) {
@@ -178,8 +178,8 @@ export default function PureDriedTeaSection() {
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl p-6 md:p-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
         {/* LEFT: Image + Stats */}
         <div className="w-full lg:w-1/2 flex flex-col items-center gap-6">
-          {/* Image */}
-          <div className="relative w-64 h-64 md:w-80 md:h-80">
+          {/* Image (slightly larger) */}
+          <div className="relative w-72 h-72 md:w-[22rem] md:h-[22rem]">
             <img
               ref={imgRef}
               src="/assets/images/image-9.webp"
@@ -191,17 +191,23 @@ export default function PureDriedTeaSection() {
           {/* Stats */}
           <div className="flex flex-row sm:flex-row items-center justify-between gap-6 w-full max-w-md">
             <div className="text-center w-full sm:w-auto">
-              <p ref={stat1Ref} className="text-2xl sm:text-xl font-extrabold text-gray-900">99%</p>
+              <p ref={stat1Ref} className="text-2xl sm:text-xl font-extrabold text-gray-900">
+                99%
+              </p>
               <p className="text-xs sm:text-sm text-gray-700 font-medium">Pure product</p>
             </div>
             <div className="hidden sm:block h-10 border-l border-gray-300" />
             <div className="text-center w-full sm:w-auto">
-              <p ref={stat2Ref} className="text-2xl sm:text-xl font-extrabold text-gray-900">90%</p>
+              <p ref={stat2Ref} className="text-2xl sm:text-xl font-extrabold text-gray-900">
+                90%
+              </p>
               <p className="text-xs sm:text-sm text-gray-700 font-medium">Quality Assurance</p>
             </div>
             <div className="hidden sm:block h-10 border-l border-gray-300" />
             <div className="text-center w-full sm:w-auto">
-              <p ref={stat3Ref} className="text-2xl sm:text-xl font-extrabold text-gray-900">89%</p>
+              <p ref={stat3Ref} className="text-2xl sm:text-xl font-extrabold text-gray-900">
+                89%
+              </p>
               <p className="text-xs sm:text-sm text-gray-700 font-medium">Trusted Buyers</p>
             </div>
           </div>

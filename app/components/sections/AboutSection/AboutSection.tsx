@@ -93,7 +93,7 @@ export default function AboutSection() {
       </h2>
 
       {/* Row 1 */}
-      <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-16">
+      <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-16 lg:ml-30">
         <div
           ref={r1ImgRef}
           className="w-full md:w-1/2 flex justify-center md:justify-start"
@@ -105,7 +105,7 @@ export default function AboutSection() {
               rounded-tl-[74px] md:rounded-tl-[90px] sm:rounded-tl-[90px]
               rounded-br-[74px] md:rounded-br-[90px] md:rounded-br-[90px]
               object-cover w-full
-              max-w-[22rem] sm:max-w-[26rem] md:max-w-[28rem] lg:max-w-none xl:max-w-[32rem] 2xl:max-w-[36rem]
+              max-w-[18rem] sm:max-w-[20rem] md:max-w-[18rem] lg:max-w-none xl:max-w-[22rem] 2xl:max-w-[36rem]
               
             "
           />
@@ -119,13 +119,13 @@ export default function AboutSection() {
             md:mr-0 lg:mr-20
           "
         >
-          <p className="text-base sm:text-lg md:text-xl mb-4 text-gray-800 font-semibold">
+          <p className="text-justify sm:text-lg md:text-xl mb-4 text-gray-800 font-semibold sm:">
             Indania’s roots run deep in the lush tea valleys of India, where the
             finest leaves are cultivated with care and expertise. Our brand
             represents a rich tradition of tea craftsmanship, passed down
             through generations in these pristine high-altitude estates.
           </p>
-          <p className="text-base sm:text-lg md:text-xl text-gray-800 font-semibold">
+          <p className="text-justify sm:text-lg md:text-xl text-gray-800 font-semibold">
             We blend time-honored methods with modern precision to ensure every
             leaf is harvested, processed, and packed to preserve its natural
             purity and potency. This careful balance of tradition and innovation
@@ -135,7 +135,7 @@ export default function AboutSection() {
       </div>
 
       {/* Row 2 */}
-      <div className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-10 lg:gap-12">
+      <div className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-10 lg:gap-12 lg:mr-30">
         <div
           ref={r2TextRef}
           className="
@@ -144,13 +144,13 @@ export default function AboutSection() {
             md:ml-0 lg:ml-20
           "
         >
-          <p className="text-base sm:text-lg md:text-xl mb-4 text-gray-800 font-semibold">
+          <p className="text-justify sm:text-lg md:text-xl mb-4 text-gray-800 font-semibold">
             Sustainability and respect for nature guide our work. We practice
             responsible harvesting and environmentally friendly processing,
             delivering tea that is not only superior in quality but also crafted
             with care for the earth.
           </p>
-          <p className="text-base sm:text-lg md:text-xl text-gray-800 font-semibold">
+          <p className="text-justify sm:text-lg md:text-xl text-gray-800 font-semibold">
             From the first leaf to your cup, Indania embodies the artistry of
             nature and craftsmanship. Our tea offers a deeply refreshing
             experience, inviting you to savor the authentic essence of India’s
@@ -169,7 +169,7 @@ export default function AboutSection() {
               rounded-tl-[68px] md:rounded-tl-[86px] sm:rounded-tl-[96px]
               rounded-br-[68px] md:rounded-br-[86px] sm:rounded-br-[96px]
               object-cover w-full
-              max-w-[22rem] sm:max-w-[26rem] md:max-w-[28rem] lg:max-w-none xl:max-w-[32rem] 2xl:max-w-[36rem]
+              max-w-[18rem] sm:max-w-[26rem] md:max-w-[28rem] lg:max-w-none xl:max-w-[22rem] 2xl:max-w-[36rem]
               
             "
           />

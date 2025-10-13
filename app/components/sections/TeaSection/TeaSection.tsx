@@ -163,7 +163,7 @@ export default function TeaSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white py-12 px-4 md:px-8 lg:px-16 mt-30 mb-30 max-w-7xl mx-auto md:h-[70vh] lg:h-[50vh]"
+      className="relative bg-white py-12 px-4 md:px-8 lg:px-16 mt-0 mb-0 max-w-7xl mx-auto  lg:min-h-[40vh]"
     >
       {/* Leaves */}
       <div className="absolute bottom-[-100px] left-[-200px] z-0 opacity-90 md:bottom-[-140px] md:left-[-220px] lg:bottom-[-200px] lg:left-[-300px]">
@@ -189,7 +189,7 @@ export default function TeaSection() {
         <div className="order-1 lg:order-none lg:col-start-1 flex flex-col items-center lg:items-start">
           <h2
             ref={headingRef}
-            className="text-2xl md:text-3xl font-bold text-gray-900 text-center lg:text-left mt-0 mb-6 md:mb-8 lg:-mt-30 lg:mb-50"
+            className="text-2xl md:text-3xl font-bold text-gray-900 text-center lg:text-left mt-0 mb-6 md:mb-8  lg:mb-50"
           >
             Crafted from the Best Tea Gardens
           </h2>
@@ -222,7 +222,7 @@ export default function TeaSection() {
               gap-y-2 md:gap-y-2.5 lg:gap-y-3
               list-none pl-0
               text-gray-800 leading-7
-              text-left lg:ml-25
+              text-left lg:ml-25 lg:mt-30
             "
           >
             {[

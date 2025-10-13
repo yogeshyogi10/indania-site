@@ -13,54 +13,108 @@ export default function FlavorSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
-  // Continuous floats (spoon, shadows, leaves)
+  // Stronger continuous floats (spoon, shadows, leaves)
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
 
     const spoon = spoonRef.current;
     const shadow1 = shadow1Ref.current;
     const shadow2 = shadow2Ref.current;
 
+    // Keep handles to kill cleanly
+    const tweens: gsap.core.Tween[] = [];
+
     if (spoon) {
-      gsap.to(spoon, {
-        y: -16,
-        duration: 3.2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+      // Bigger vertical bob + gentle horizontal drift + slight tilt
+      tweens.push(
+        gsap.to(spoon, {
+          y: -32,             // was -16
+          duration: 3.2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        }),
+        gsap.to(spoon, {
+          x: "+=14",
+          rotation: 1.2,
+          transformOrigin: "50% 50%",
+          duration: 5.6,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        })
+      );
     }
 
     if (shadow1 && shadow2) {
-      gsap.to([shadow1, shadow2], {
-        scale: 0.95,
-        opacity: 0.85,
-        duration: 3.6,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+      // Make shadows breathe a bit more and drift subtly to match spoon motion
+      tweens.push(
+        gsap.to([shadow1, shadow2], {
+          scale: 0.9,         // was 0.95
+          opacity: 0.75,      // was 0.85
+          duration: 3.8,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        }),
+        gsap.to(shadow1, {
+          x: "+=10",
+          duration: 5.6,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        }),
+        gsap.to(shadow2, {
+          x: "-=10",
+          duration: 5.6,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        })
+      );
     }
 
-    gsap.to(".leaf-top", {
-      y: -12,
-      rotation: 4,
-      duration: 4.8,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-    gsap.to(".leaf-bottom", {
-      y: 12,
-      rotation: -4,
-      duration: 5.2,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
+    // Leaves: more travel + a touch of horizontal drift
+    const leafTopEls = gsap.utils.toArray<HTMLElement>(".leaf-top");
+    const leafBottomEls = gsap.utils.toArray<HTMLElement>(".leaf-bottom");
+
+    if (leafTopEls.length) {
+      tweens.push(
+        gsap.to(leafTopEls, {
+          y: -28,            // was -12
+          x: 10,
+          rotation: 8,       // was 4
+          duration: 5.0,     // was 4.8
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          stagger: 0.05,
+        })
+      );
+    }
+
+    if (leafBottomEls.length) {
+      tweens.push(
+        gsap.to(leafBottomEls, {
+          y: 28,             // was 12
+          x: -10,
+          rotation: -8,      // was -4
+          duration: 5.4,     // was 5.2
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          stagger: 0.05,
+        })
+      );
+    }
 
     return () => {
-      gsap.killTweensOf([spoon, shadow1, shadow2, ".leaf-top", ".leaf-bottom"]);
+      tweens.forEach((t) => t.kill());
     };
   }, []);
 
@@ -130,10 +184,10 @@ export default function FlavorSection() {
         className="
           pointer-events-none select-none
           absolute z-0 leaf-top
-          -top-4 -right-4
+          -top-4 -right-10
           sm:-top-8 sm:right-8
-          md:-top-3 md:-right-12
-          lg:-top-6 lg:-right-6
+          md:-top-3 md:-right-30
+          lg:-top-6 lg:-right-26
         "
       >
         <Image
@@ -155,10 +209,10 @@ export default function FlavorSection() {
         className="
           pointer-events-none select-none
           absolute z-0 leaf-bottom
-          -bottom-10 -left-4
+          -bottom-10 -left-14
           sm:-bottom-2 sm:-left-8
-          md:-bottom-6 md:-left-12
-          lg:-bottom-10 lg:-left-40
+          md:-bottom-6 md:-left-30
+          lg:-bottom-10 lg:-left-50
         "
       >
         <Image
@@ -170,7 +224,7 @@ export default function FlavorSection() {
             object-contain opacity-80
             w-60 h-auto
             sm:w-72 md:w-[26rem] lg:w-[42rem]
-            -rotate-180 
+            -rotate-180
           "
         />
       </div>

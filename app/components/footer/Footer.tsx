@@ -53,7 +53,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <p className="mt-6 text-xs text-gray-400">
-        © 2024 Relume. All rights reserved.
+        © 2024 Indania. All rights reserved.
       </p>
     </footer>
   );
