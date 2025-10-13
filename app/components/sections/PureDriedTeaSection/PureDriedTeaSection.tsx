@@ -175,7 +175,7 @@ export default function PureDriedTeaSection() {
       ref={sectionRef}
       className="relative z-10 px-4 md:px-8 lg:px-0 -mt-25 max-w-7xl mx-auto"
     >
-      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl p-6 md:p-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl p-0 md:p-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-">
         {/* LEFT: Image + Stats */}
         <div className="w-full lg:w-1/2 flex flex-col items-center gap-6">
           {/* Image (slightly larger) */}

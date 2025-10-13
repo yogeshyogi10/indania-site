@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
-  weight: ["400", "500", "600", "700"], // you can include more if needed
+  weight: ["400", "500", "600", "700"],
 });
 
 // === Metadata ===
@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} font-manrope bg-white text-gray-900 justify-center align-middle`}
+        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} font-manrope bg-white text-gray-900`}
       >
         <Navbar />
         {children}

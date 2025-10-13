@@ -174,7 +174,7 @@ const NewsletterSignup: React.FC = () => {
             type="text"
             placeholder="First Name"
             className="
-              px-6 py-3 rounded-full w-full block
+              px-6 py-3 rounded-full w-full block font-black
               outline-none border border-gray-300 bg-white
               transform-gpu transition-transform duration-200 ease-out
               hover:scale-[1.03] focus:scale-[1.03]
@@ -186,7 +186,7 @@ const NewsletterSignup: React.FC = () => {
             type="email"
             placeholder="Email"
             className="
-              px-6 py-3 rounded-full w-full block
+              px-6 py-3 rounded-full w-full block font-black
               outline-none border border-gray-300 bg-white
               transform-gpu transition-transform duration-200 ease-out
               hover:scale-[1.03] focus:scale-[1.03]

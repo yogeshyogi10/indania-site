@@ -9,7 +9,7 @@ export default function TeaSection() {
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
 
-  // NEW: image refs
+  // Image refs
   const leftImgARef = useRef<HTMLDivElement | null>(null);
   const leftImgBRef = useRef<HTMLDivElement | null>(null);
   const rightBigRef = useRef<HTMLDivElement | null>(null);
@@ -80,9 +80,10 @@ export default function TeaSection() {
     };
   }, []);
 
-  // Throw-in image animations
+  // Pop-in images one-by-one
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
     const prefersReduced =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -93,33 +94,15 @@ export default function TeaSection() {
     const leftA = leftImgARef.current;
     const leftB = leftImgBRef.current;
     const rightBig = rightBigRef.current;
-
     if (!leftA || !leftB || !rightBig) return;
 
-    // Initial states (off-screen-ish with rotation + blur)
     const setInitial = () => {
-      gsap.set(leftA, {
+      gsap.set([leftA, leftB, rightBig], {
         opacity: 0,
-        x: -140,
         y: 24,
-        rotate: -12,
+        scale: 0.85,
         filter: "blur(6px)",
-        willChange: "transform,opacity,filter",
-      });
-      gsap.set(leftB, {
-        opacity: 0,
-        x: -160,
-        y: 40,
-        rotate: -16,
-        filter: "blur(6px)",
-        willChange: "transform,opacity,filter",
-      });
-      gsap.set(rightBig, {
-        opacity: 0,
-        x: 160,
-        y: 20,
-        rotate: 10,
-        filter: "blur(6px)",
+        transformOrigin: "50% 60%",
         willChange: "transform,opacity,filter",
       });
     };
@@ -128,20 +111,18 @@ export default function TeaSection() {
 
     if (prefersReduced) {
       gsap.set([leftA, leftB, rightBig], {
-        opacity: 1, x: 0, y: 0, rotate: 0, filter: "blur(0px)", willChange: "auto",
+        opacity: 1, y: 0, scale: 1, filter: "blur(0px)", willChange: "auto",
       });
       return;
     }
 
-    // Timeline: throw in from sides, slight overshoot/settle
-    const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
-
-    tl.to(leftA, { opacity: 1, x: 0, y: 0, rotate: 0, filter: "blur(0px)", duration: 0.9 }, 0.05)
-      .to(leftB, { opacity: 1, x: 0, y: 0, rotate: 0, filter: "blur(0px)", duration: 0.95 }, 0.12)
-      .to(rightBig, { opacity: 1, x: 0, y: 0, rotate: 0, filter: "blur(0px)", duration: 1.0 }, 0.18)
-      // small settle bounce
-      .to([leftA, leftB, rightBig], { y: -6, duration: 0.22, ease: "sine.out" }, "-=0.35")
-      .to([leftA, leftB, rightBig], { y: 0, duration: 0.22, ease: "sine.in" }, "<");
+    const tl = gsap.timeline({ paused: true });
+    tl.to(leftA,  { opacity: 1, y: 0, scale: 1.04, filter: "blur(0px)", duration: 0.6, ease: "back.out(1.7)" }, 0.05)
+      .to(leftA,  { scale: 1, duration: 0.18, ease: "sine.out" }, ">-0.03")
+      .to(leftB,  { opacity: 1, y: 0, scale: 1.04, filter: "blur(0px)", duration: 0.62, ease: "back.out(1.7)" }, "+=0.12")
+      .to(leftB,  { scale: 1, duration: 0.18, ease: "sine.out" }, "<")
+      .to(rightBig,{ opacity: 1, y: 0, scale: 1.05, filter: "blur(0px)", duration: 0.68, ease: "back.out(1.7)" }, "+=0.12")
+      .to(rightBig,{ scale: 1, duration: 0.22, ease: "sine.out" }, "<");
 
     const st = ScrollTrigger.create({
       trigger: wrap,
@@ -153,17 +134,25 @@ export default function TeaSection() {
       },
     });
 
+    // Refresh after any image load (avoid early triggers)
+    const imgs = [leftA, leftB, rightBig].map((d) => d.querySelector("img")) as HTMLImageElement[];
+    const onLoad = () => ScrollTrigger.refresh();
+    imgs.forEach((img) => {
+      if (img && !img.complete) img.addEventListener("load", onLoad);
+    });
+
     return () => {
       st.kill();
       tl.kill();
       gsap.killTweensOf([leftA, leftB, rightBig]);
+      imgs.forEach((img) => img && img.removeEventListener("load", onLoad));
     };
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white py-12 px-4 md:px-8 lg:px-16 mt-0 mb-0 max-w-7xl mx-auto  lg:min-h-[40vh]"
+      className="relative bg-white py-12 px-4 md:px-8 lg:px-16 mt-0 mb-0 max-w-7xl mx-auto lg:min-h-[40vh]"
     >
       {/* Leaves */}
       <div className="absolute bottom-[-100px] left-[-200px] z-0 opacity-90 md:bottom-[-140px] md:left-[-220px] lg:bottom-[-200px] lg:left-[-300px]">
@@ -189,7 +178,7 @@ export default function TeaSection() {
         <div className="order-1 lg:order-none lg:col-start-1 flex flex-col items-center lg:items-start">
           <h2
             ref={headingRef}
-            className="text-2xl md:text-3xl font-bold text-gray-900 text-center lg:text-left mt-0 mb-6 md:mb-8  lg:mb-50"
+            className="text-2xl md:text-3xl font-bold text-gray-900 text-center lg:text-left mt-0 mb-6 md:mb-8 lg:mb-50"
           >
             Crafted from the Best Tea Gardens
           </h2>
@@ -201,11 +190,12 @@ export default function TeaSection() {
             >
               <img src="/assets/images/image-5.webp" alt="Tea Picker" className="object-cover w-full h-full" />
             </div>
-           <div
-              ref={leftImgARef}
+
+            <div
+              ref={leftImgBRef}
               className="relative rounded-lg overflow-hidden shadow-md w-46 h-46 md:w-55 md:h-55 lg:-mt-20"
             >
-              <img src="/assets/images/image-6.webp" alt="Tea Picker" className="object-cover w-full h-full" />
+              <img src="/assets/images/image-6.webp" alt="Tea Worker" className="object-cover w-full h-full" />
             </div>
           </div>
         </div>
@@ -225,12 +215,7 @@ export default function TeaSection() {
               text-left lg:ml-25 lg:mt-30
             "
           >
-            {[
-              "Freshly hand picked",
-              "Multi time washing",
-              "Sun Dried",
-              "Grinding And Packing Well",
-            ].map((item) => (
+            {["Freshly hand picked", "Multi time washing", "Sun Dried", "Grinding And Packing Well"].map((item) => (
               <li key={item} className="flex items-baseline gap-2">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-yellow-500 translate-y-[2px]" />
                 <span className="[text-wrap:balance]">{item}</span>
@@ -239,7 +224,7 @@ export default function TeaSection() {
           </ul>
         </div>
 
-        {/* RIGHT: big image (throws in from right) */}
+        {/* RIGHT: big image */}
         <div
           ref={rightBigRef}
           className="
