@@ -24,8 +24,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Indania | Quality Food Products",
   description: "Experience the art of tea and natural food products.",
+  icons: {
+      icon: ("/favicon.png"),          // or "/favicon.ico"
+      apple:("/apple-touch-icon.png"),
+}
 };
-
 // === Root Layout ===
 export default function RootLayout({
   children,
