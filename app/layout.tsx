@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   title: "Indania | Quality Food Products",
   description: "Experience the art of tea and natural food products.",
   icons: {
-      icon: ("/favicon-transparent.png"),          // or "/favicon.ico"
-      apple:("/apple-touch-icon.png"),
+      icon: ("/favicon.ico"),          // or "/favicon.ico"
+      apple:("/favicon.ico"),
 }
 };
 // === Root Layout ===
